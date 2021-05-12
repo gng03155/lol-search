@@ -5,8 +5,17 @@ import { searchUser } from "../api/search";
 
 export const searchDispatch = (name: string) => {
     return async (dispatch: Dispatch<searchDispatchType>) => {
-        const $ = await searchUser("엔터키좀빼고하자");
-        console.log($);
+        const $ = await searchUser(name);
+        if ($(".Header").find(".Information > span").text() === "") {
+            dispatch({
+                type: API_LOADING_FAIL,
+                error: "아이디 없음",
+            })
+
+            // return new Promise((resolve, reject) => { resolve(false) });
+            return false;
+        }
+
         const user = settingUserInfo($);
         const allGame = settingGameInfo($);
 
@@ -15,6 +24,9 @@ export const searchDispatch = (name: string) => {
             userState: user,
             gameState: allGame,
         })
+
+        // return new Promise((resolve, reject) => { resolve(true) });
+        return true;
     }
 }
 
@@ -23,6 +35,7 @@ const settingUserInfo = ($: any) => {
     let user: userInfo = {
         name: $(".Header").find(".Information > span").text(),
         iconImg: $(".Header").find(".ProfileImage").attr("src"),
+        level: $(".Header").find(".ProfileIcon > span").text(),
         tier: $(".TierBox").find(".TierRank ").text(),
         tierImg: $(".TierBox").find(".Image").attr("src"),
         tierPoint: $(".TierBox").find(".LeaguePoints").text().trim(),
@@ -83,7 +96,7 @@ const settingGameInfo = ($: any) => {
         gameInfo.score.kdaRate = $(elem).find(".KDARatio > span").text();
 
         gameInfo.stat.level = $(elem).find(".Stats > .Level").text().trim();
-        gameInfo.stat.cs = $(elem).find(".Stats > span.CS").text().trim();
+        gameInfo.stat.cs = $(elem).find(".Stats span.CS").text().trim();
         gameInfo.stat.ckRate = $(elem).find(".Stats > .CKRate").text().trim();
 
         let teamList = $(elem).find(".Team > div").toArray();

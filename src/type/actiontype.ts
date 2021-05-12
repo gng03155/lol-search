@@ -13,6 +13,7 @@ export interface userInfo {
     tierPoint: string | null,
     winLose: string | null,
     rate: string | null,
+    level: string | null,
 }
 
 type gameStatus = {
@@ -62,7 +63,7 @@ export type apiLoadingSuccess = {
 
 export interface apiLoadingFail {
     type: typeof API_LOADING_FAIL,
-    error: any,
+    error: string,
 }
 
 export type searchDispatchType = apiLoadingSuccess | apiLoadingFail;
