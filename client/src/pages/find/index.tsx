@@ -1,12 +1,11 @@
 import React from 'react';
-import GameList from '../../layouts/GameList';
-import UserStat from '../../layouts/UserStat';
+import GameList from '../../components/GameList';
+import UserStat from '../../components/UserStat';
 
 import { Section } from "./styles";
 
 import { useSelector } from "react-redux";
 import { ReducerType } from "../../store";
-import Loading from '../../components/Loading';
 
 
 

@@ -5,14 +5,14 @@ import { useDispatch } from "react-redux";
 
 import { Dispatch } from "redux"
 
-import { searchDispatch, setInitState } from '../../action/searchAction';
+import { searchDispatch, setInitState } from '../../store/action/searchAction';
 
 import { useHistory, useLocation } from "react-router-dom";
 
 
 import Loading from '../../components/Loading';
 
-import { searchDispatchType } from "../../type/actiontype"
+import { searchDispatchType } from "../../store/type/actiontype"
 
 
 const Head: React.FC = () => {
@@ -33,6 +33,7 @@ const Head: React.FC = () => {
     const onClickLogo = useCallback(
         (event) => {
             event.preventDefault();
+            setUserName("");
             history.push("/");
         },
         [history]
@@ -46,15 +47,13 @@ const Head: React.FC = () => {
 
             dispatch(setInitState());
 
-            // await dispatch(searchDispatch(userName));
+            const isUser: Boolean | ((dispatch: Dispatch<searchDispatchType>) => Promise<boolean>) = await dispatch(searchDispatch(userName));
 
-            const tt: Boolean | ((dispatch: Dispatch<searchDispatchType>) => Promise<boolean>) = await dispatch(searchDispatch(userName));
-
-            if (typeof tt === "boolean" && tt) {
-                if (location.pathname !== "/find") history.push("/find");
+            if (typeof isUser === "boolean" && isUser) {
+                if (location.pathname !== "/find") history.push(`/find/userName=${userName}`);
             }
             else {
-                alert("찾는 아이디가 없습니다!!");
+                alert("찾는 아이디가 없습니다");
             }
 
             setLoading(false);

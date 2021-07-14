@@ -1,12 +1,12 @@
 // import userEvent from '@testing-library/user-event';
-import { API_LOADING_SUCCESS, API_LOADING_FAIL, SET_INIT_STATE, userInfo, gameInfo, searchDispatchType } from "../type/actiontype";
+import { API_LOADING_SUCCESS, API_LOADING_FAIL, SET_INIT_STATE, userInfo, GameInfo, searchDispatchType } from "../type/actiontype";
 
 
 export interface InitialState {
     success: boolean,
     userName: string,
     user?: userInfo,
-    gameList?: gameInfo[],
+    gameList?: GameInfo[],
 }
 
 const initialState: InitialState = {

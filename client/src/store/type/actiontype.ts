@@ -24,7 +24,7 @@ type gameStatus = {
 }
 
 type champInfo = {
-    chmapName: string | null,
+    champName: string | null,
     champImg: string | null,
 }
 
@@ -46,20 +46,22 @@ type teamInfo = {
     enemy: string[] | null,
 }
 
-export interface gameInfo {
+export interface GameInfo {
     status: gameStatus,
-    chmap: champInfo,
+    champ: champInfo,
     score: gameScore,
     stat: gameStat,
     team: teamInfo,
 }
+
+export type testType = Partial<GameInfo>
 
 //=================================== Action Type
 
 export type apiLoadingSuccess = {
     type: typeof API_LOADING_SUCCESS,
     userState: userInfo,
-    gameState: gameInfo[],
+    gameState: GameInfo[],
 }
 
 export interface apiLoadingFail {

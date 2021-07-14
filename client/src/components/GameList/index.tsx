@@ -66,8 +66,8 @@ const GameList = () => {
                         <span className="timestamp">{gameList[i].status.playTime}</span>
                     </div>
                     <div className="champinfo">
-                        <img src={gameList[i].chmap.champImg || ""} alt="챔피언 이미지" />
-                        <figcaption>{gameList[i].chmap.chmapName}</figcaption>
+                        <img src={gameList[i].champ.champImg || ""} alt="챔피언 이미지" />
+                        <figcaption>{gameList[i].champ.champName}</figcaption>
                     </div>
                     <div className="kda">
                         <div className="kdascore">
