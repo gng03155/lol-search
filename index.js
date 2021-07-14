@@ -50,7 +50,13 @@ app.get('*', (req, res) => {
 async function openBrowser(name) {
     console.log("들어옴?");
     // 브라우저 실행 (창 크기 , 브라우저 오픈등 다양한 옵션 설정 가능) 
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+        headless: true, args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--window-size=1600,2000",
+        ]
+    });
 
 
     browser.on('disconnected', async () => {
