@@ -58,7 +58,7 @@ const GameList = () => {
 
         for (let i = 0; i < count; i++) {
             games[i] =
-                <GameItem key={i} win={gameList[i].status.result === "승리" ? true : false}  >
+                <GameItem key={i} win={(gameList[i].status.result === "승리" || gameList[i].status.result === "Victory") ? true : false}  >
                     <div className="gamestats">
                         <strong className="gametype">{gameList[i].status.mode}</strong>
                         <strong className="gameresult">{gameList[i].status.result}</strong>

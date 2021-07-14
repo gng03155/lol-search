@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Header, Form } from "./styles";
+import { Header, Form, Wrap } from "./styles";
 
 import { useDispatch } from "react-redux";
 
@@ -62,7 +62,7 @@ const Head: React.FC = () => {
         [userName, history, dispatch, location]);
 
     return (
-        <div>
+        <Wrap>
             <Header>
                 <div className="logo" onClick={(e) => onClickLogo(e)}>
                     <img src="https://opgg-static.akamaized.net/logo/20210507150154.f243e79f6e0345779cbd9f556ba99fd0.png" alt="로고 이미지" />
@@ -78,7 +78,7 @@ const Head: React.FC = () => {
                 </Form>
             </Header>
             {loading && <Loading />}
-        </div>
+        </Wrap>
     )
 }
 

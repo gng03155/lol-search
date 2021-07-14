@@ -5,11 +5,13 @@ import styled from "styled-components"
 
 const Wrap = styled.div`
 
-    width : 100vw;
-    height : 300px;
-    margin : 0 !important;
-    border : 0 !important;
-    border-radius : 0 !important;
+    &&{
+        width : 100%;
+        height : calc(100vh - 400px);
+        margin : 0;
+        border : 0;
+        border-radius : 0;
+    }
 
 `
 

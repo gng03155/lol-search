@@ -2,8 +2,14 @@ import styled from 'styled-components'
 
 import btn from "../../assets/site.png";
 
+export const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 export const Header = styled.header`
   width : 100vw;
+  height : 400px;
   padding : 50px 0px;
   display : flex;
   flex-direction : column;
